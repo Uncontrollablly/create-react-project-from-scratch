@@ -25,4 +25,12 @@ module.exports = {
     // Specify the base path for all the assets within your application
     publicPath: "/dist/", // The url to the output directory resolved relative to the HTML page
   },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "public"),
+    },
+    port: 3000,
+    hot: true,
+    open: true,
+  },
 };
