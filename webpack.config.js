@@ -22,12 +22,16 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
-    // Specify the base path for all the assets within your application
-    publicPath: "/dist/", // The url to the output directory resolved relative to the HTML page
+    // Specify the public URL of the output directory when referenced in a browser
+    // The URL of output.path from the view of the HTML page
+    // A relative URL is resolved relative to the HTML page
+    publicPath: "/dist/",
   },
   devServer: {
     static: {
       directory: path.join(__dirname, "public"),
+      // Tell the server at which URL to serve static.directory content
+      // publicPath: "/",
     },
     port: 3000,
     hot: true,
