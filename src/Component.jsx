@@ -1,21 +1,17 @@
 import React, { useState } from "react";
-import "./App.css";
-import Component from "./Component";
 
-const App = () => {
-  const [text, setText] = useState("app");
-
+const Component = () => {
+  const [text, setText] = useState("component");
   return (
     <div className="app">
-      hello world
+      component
       <input
         type="text"
         value={text}
         onInput={(e) => setText(e.target.value)}
       />
-      <Component></Component>
     </div>
   );
 };
 
-export default App;
+export default Component;
