@@ -6,14 +6,15 @@ module.exports = (env, argv) => {
   const isDevelopment = mode === "development";
 
   return {
-    entry: "./src/index.js",
+    entry: "./src/index",
     // Loaders are transformations that are applied to the source code of a module
     module: {
       rules: [
         {
-          test: /\.m?(js|jsx)$/,
+          test: /\.m?(js|ts)x?$/,
           exclude: /node_modules/,
-          loader: "babel-loader", // loader is a shorthand for the 'use' property, when only one loader is being utilized
+          // loader is a shorthand for the 'use' property, when only one loader is being utilized
+          loader: "babel-loader",
           options: {
             plugins: [
               isDevelopment && require.resolve("react-refresh/babel"),
@@ -27,7 +28,10 @@ module.exports = (env, argv) => {
       ],
     },
     plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
-    resolve: { extensions: ["*", ".js", ".jsx"] }, // allows to import modules without extensions
+    resolve: {
+      // allows to import modules without extensions
+      extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
+    },
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: "bundle.js",
