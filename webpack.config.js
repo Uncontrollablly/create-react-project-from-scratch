@@ -7,6 +7,7 @@ module.exports = (env, argv) => {
 
   return {
     entry: "./src/index",
+    devtool: isDevelopment ? "eval-cheap-module-source-map" : false,
     // Loaders are transformations that are applied to the source code of a module
     module: {
       rules: [
