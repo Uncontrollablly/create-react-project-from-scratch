@@ -13,7 +13,7 @@ const App = () => {
         value={text}
         onInput={(e) => setText((e.target as HTMLInputElement).value)}
       />
-      <Component></Component>
+      <Component />
     </div>
   );
 };
