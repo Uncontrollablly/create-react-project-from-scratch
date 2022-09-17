@@ -25,7 +25,20 @@ module.exports = (env, argv) => {
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"],
+          use: [
+            "style-loader",
+            {
+              loader: "css-loader",
+              options: {
+                modules: {
+                  auto: true,
+                  localIdentName: isDevelopment
+                    ? "[path][name]__[local]"
+                    : "[hash:base64]",
+                },
+              },
+            },
+          ],
         },
       ],
     },

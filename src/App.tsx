@@ -1,12 +1,12 @@
 import { useState } from "react";
-import "./App.css";
+import styles from "./App.module.css";
 import Component from "./Component";
 
 const App = () => {
   const [text, setText] = useState("app");
 
   return (
-    <div className="app">
+    <div className={styles.app}>
       hello world
       <input
         type="text"
