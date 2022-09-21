@@ -1,7 +1,8 @@
 const path = require("path");
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-module.exports = (env, argv) => {
+module.exports = (_, argv) => {
   const mode = argv.mode;
   const isDevelopment = mode === "development";
 
@@ -42,7 +43,13 @@ module.exports = (env, argv) => {
         },
       ],
     },
-    plugins: [isDevelopment && new ReactRefreshWebpackPlugin()].filter(Boolean),
+    plugins: [
+      new HtmlWebpackPlugin({
+        template: "public/index.html",
+        inject: true,
+      }),
+      isDevelopment && new ReactRefreshWebpackPlugin(),
+    ].filter(Boolean),
     resolve: {
       // allows to import modules without extensions
       extensions: [".ts", ".tsx", ".js", ".jsx", ".json"],
@@ -53,13 +60,13 @@ module.exports = (env, argv) => {
       // Specify the public URL of the output directory when referenced in a browser
       // The URL of output.path from the view of the HTML page
       // A relative URL is resolved relative to the HTML page
-      publicPath: "/dist/",
+      publicPath: "/",
     },
     devServer: {
       static: {
         directory: path.join(__dirname, "public"),
         // Tell the server at which URL to serve static.directory content
-        // publicPath: "/",
+        publicPath: "/static/",
       },
       port: 3000,
       hot: true,
