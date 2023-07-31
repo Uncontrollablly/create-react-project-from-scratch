@@ -17,7 +17,6 @@
   "author": "yq",
   "license": "ISC",
   "devDependencies": {
-    "@babel/cli": "^7.17.10",
     "@babel/core": "^7.17.10",
     "@babel/preset-env": "^7.17.10",
     "@babel/preset-react": "^7.16.7",
